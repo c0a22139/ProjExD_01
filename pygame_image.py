@@ -8,7 +8,7 @@ def main():
     clock  = pg.time.Clock()
     bg_img = pg.image.load("ex01/fig/pg_bg.jpg")
     c3_img = pg.image.load("ex01/fig/3.png")
-    c3_img = pg.transform.load(c3_img, True, False)
+    c3_img = pg.transform.flip(c3_img, True, False)
     c3_img_2 = pg.transform.rotozoom(c3_img, 10, 1.0)
     list_c3 = [c3_img, c3_img_2]
     tmr = 0
@@ -17,6 +17,7 @@ def main():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [0, 0])
+        screen.blit(list_c3[tmr%2],[300,200])
         pg.display.update()
         tmr += 1        
         clock.tick(10)
